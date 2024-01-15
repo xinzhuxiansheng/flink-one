@@ -10,6 +10,9 @@
     <module>one-core</module>
       <module>one-flink</module>
     <module>one-cli</module>
+    <module>one-client</module>
+    <module>one-executor</module>
+    <module>one-app</module>
   </modules>
 
   <version>1.0-SNAPSHOT</version>
