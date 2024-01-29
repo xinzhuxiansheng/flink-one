@@ -5,16 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.one</groupId>
-        <artifactId>flink-one</artifactId>
+        <artifactId>one-client</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>one-client</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>one-client-1.15</module>
-        <module>one-client-base</module>
-    </modules>
+    <artifactId>one-client-1.15</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -22,13 +17,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>flink-1.15</id>
-            <modules>
-                <module>one-client-1.15</module>
-            </modules>
-        </profile>
-    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.one</groupId>
+            <artifactId>one-flink-1.15</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>

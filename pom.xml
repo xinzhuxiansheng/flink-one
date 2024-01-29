@@ -13,6 +13,7 @@
     <module>one-client</module>
     <module>one-executor</module>
     <module>one-app</module>
+    <module>one-client/one-client-1.15</module>
   </modules>
 
   <version>1.0-SNAPSHOT</version>
@@ -22,6 +23,10 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <one.flink.version>1.15</one.flink.version>
+    <log4j.version>2.19.0</log4j.version>
+    <jackjson.version>2.14.0-rc2</jackjson.version>
   </properties>
 
 
@@ -32,12 +37,113 @@
       <version>RELEASE</version>
       <scope>compile</scope>
     </dependency>
-
-
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-jul</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+
+      <!--内部模块声明-->
+      <dependency>
+        <groupId>com.one</groupId>
+        <artifactId>one-client-1.15</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.one</groupId>
+        <artifactId>one-flink-1.15</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.one</groupId>
+        <artifactId>one-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackjson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackjson.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
 
   <build>
-    <finalName>flink-one</finalName>
+
   </build>
+
+  <profiles>
+
+    <profile>
+      <id>dev</id>
+      <activation>
+        <property>
+          <name>dev</name>
+        </property>
+      </activation>
+      <properties>
+        <!--  `provided` for product environment ,`compile` for dev environment  -->
+        <scope.runtime>compile</scope.runtime>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>prod</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <property>
+          <name>!dev</name>
+        </property>
+      </activation>
+      <properties>
+        <!--  `provided` for product environment ,`compile` for dev environment  -->
+        <scope.runtime>provided</scope.runtime>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>flink-1.15</id>
+      <activation>
+        <property>
+          <name>flink-1.15</name>
+        </property>
+      </activation>
+      <properties>
+        <!--  modify flink version  -->
+        <one.flink.version>1.15</one.flink.version>
+      </properties>
+    </profile>
+  </profiles>
+
+
 </project>
