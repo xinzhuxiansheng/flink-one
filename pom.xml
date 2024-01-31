@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.one</groupId>
+  <groupId>com.yzhou.flink</groupId>
   <artifactId>flink-one</artifactId>
   <packaging>pom</packaging>
   <modules>
@@ -69,17 +69,17 @@
 
       <!--内部模块声明-->
       <dependency>
-        <groupId>com.one</groupId>
+        <groupId>com.yzhou.flink</groupId>
         <artifactId>one-client-1.15</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.one</groupId>
+        <groupId>com.yzhou.flink</groupId>
         <artifactId>one-flink-1.15</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.one</groupId>
+        <groupId>com.yzhou.flink</groupId>
         <artifactId>one-common</artifactId>
         <version>${project.version}</version>
       </dependency>

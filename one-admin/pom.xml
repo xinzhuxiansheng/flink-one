@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.one</groupId>
+        <groupId>com.yzhou.flink</groupId>
         <artifactId>flink-one</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.one</groupId>
+    <groupId>com.yzhou.flink</groupId>
     <artifactId>one-admin</artifactId>
     <name>one-admin</name>
     <description>one-admin</description>
@@ -33,7 +33,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.one</groupId>
+            <groupId>com.yzhou.flink</groupId>
             <artifactId>one-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
